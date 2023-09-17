@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, (req, res) => {
+httpServer.listen(PORT, (req, res) => {
     console.log(`Server running one port: ${PORT}`)
 });
 
@@ -72,4 +72,4 @@ io.on("connection", (socket) => {
     });
 });
 
-httpServer.listen(4000);
+// httpServer.listen(4000);
