@@ -6,11 +6,13 @@ import userRoutes from './routes/user.js'
 import chatRoutes from './routes/chat.js'
 import messageRoutes from './routes/message.js'
 import {Server} from 'socket.io'
-
-const io = new Server({cors: "http://localhost:5173"});
-
+import { createServer } from 'http';
 
 const app = express();
+const httpServer = createServer(app);
+
+const io = new Server(httpServer, {cors: "http://localhost:5173"});
+
 dotenv.config();
 
 app.use(express.json());
@@ -70,5 +72,4 @@ io.on("connection", (socket) => {
     });
 });
 
-
-io.listen(4000);
+httpServer.listen(4000);
