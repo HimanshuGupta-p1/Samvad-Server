@@ -71,5 +71,3 @@ io.on("connection", (socket) => {
         io.emit("getOnlineUsers", onlineUsers);
     });
 });
-
-// httpServer.listen(4000);
