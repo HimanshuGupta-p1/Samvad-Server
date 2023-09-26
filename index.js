@@ -11,7 +11,7 @@ import { createServer } from 'http';
 const app = express();
 const httpServer = createServer(app);
 
-const io = new Server(httpServer, {cors: "http://localhost:5173"});
+const io = new Server(httpServer, {cors: "https://samvad-chat-app.netlify.app/"});
 
 dotenv.config();
 
