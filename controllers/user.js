@@ -2,6 +2,7 @@ import user from '../models/user.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import validator from 'validator';
+import {validate} from 'deep-email-validator'
 
 const createToken = (_id) => {
     const jwtkey = process.env.JWT_SECRET_KEY;
@@ -18,10 +19,17 @@ export const registerUser = async (req, res) => {
 
         if (!name || !email || !password)
             return res.status(400).json("All fields are required");
-        if (!validator.isEmail(email))
-            return res.status(400).json("Invalid email");
+        
+        const emailValid = await validate(email)
+            if(! emailValid.valid) {
+                // console.log(false);
+                return res.status(400).json("Invalid Email")
+            }
+            
+
         if (!validator.isStrongPassword(password))
             return res.status(400).json("Password must be strong with min length of 6");
+
 
         User = new user({ name, email, password });
 

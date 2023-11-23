@@ -15,6 +15,7 @@
     "bcrpyt": "^2.0.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "deep-email-validator": "^0.1.21",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "http": "^0.0.1-security",
